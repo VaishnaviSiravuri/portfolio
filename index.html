@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vaishnavi Siravuri</title>
+<meta name="description" content="Vaishnavi Siravuri: CS at UT Dallas, frontend and mobile developer. Projects, experience and resume.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600&family=Caveat:wght@600&display=swap">
+<style>
+/* Layout: a desk you look down on. Graph-paper ground, objects (sticky notes, index cards, tape) carry the content. */
+:root{
+  --paper:#eef1f6; --grid:#dbe2ee; --card:#ffffff; --ink:#1d2742; --muted:#58617a;
+  --marigold:#f3b53f; --tape:#f29b8f; --sky:#9cc3e8; --mint:#a9dcc2; --line:#cfd6e3;
+  --display:"Bricolage Grotesque",system-ui,sans-serif; --body:"Figtree",system-ui,sans-serif; --hand:"Caveat","Comic Sans MS",cursive;
+  --shadow:0 1px 2px rgba(29,39,66,.08),0 8px 24px rgba(29,39,66,.10);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#141a29; --grid:#1d2538; --card:#1d2436; --ink:#e9edf6; --muted:#a3acc2; --line:#2c3550;
+  --marigold:#f5c058; --tape:#e98a7e; --sky:#6d9fcf; --mint:#6fbb97; --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#141a29; --grid:#1d2538; --card:#1d2436; --ink:#e9edf6; --muted:#a3acc2; --line:#2c3550;
+  --marigold:#f5c058; --tape:#e98a7e; --sky:#6d9fcf; --mint:#6fbb97; --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35); color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--body);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--marigold);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--display);line-height:1.05;margin:0;text-wrap:balance}
+.hand{font-family:var(--hand);font-weight:600}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:20px;padding-block:14px}
+.mark{font:800 1.1rem var(--display);text-decoration:none;display:flex;align-items:center;gap:8px}
+.mark span{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--marigold);color:#1d2742;font-size:.85rem}
+nav ul{display:flex;gap:20px;list-style:none;margin:0 0 0 auto;padding:0;font-weight:500}
+nav ul a{text-decoration:none;color:var(--muted)}
+nav ul a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 .95rem var(--body);padding:10px 18px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);text-decoration:none;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--ink)}
+@media (max-width:640px){nav ul{display:none}nav .btn{margin-left:auto}}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-block:72px 56px}
+.hero .hi{font-size:2rem;color:var(--muted)}
+.hero h1{font-size:clamp(3rem,8vw,5.6rem);font-weight:800;letter-spacing:-.02em;margin:4px 0 16px}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--marigold) 62%,var(--marigold) 90%,transparent 90%)}
+.role{font-size:1.2rem;font-weight:500;margin:0 0 10px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px;padding:0;list-style:none}
+.tags li{font-size:.9rem;padding:4px 12px;border-radius:999px;background:var(--card);border:1px solid var(--line)}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+
+.desk{position:relative;min-height:430px}
+.obj{position:absolute;background:var(--card);box-shadow:var(--shadow);transition:transform .25s}
+.obj:hover{transform:rotate(0deg) scale(1.03)!important;z-index:5}
+.tape::before{content:"";position:absolute;top:-12px;left:50%;width:84px;height:24px;transform:translateX(-50%) rotate(-3deg);background:var(--tape);opacity:.75}
+.sticky{background:var(--marigold);color:#1d2742;padding:22px 20px;width:200px;transform:rotate(-4deg);top:10px;left:4%}
+.sticky b{display:block;font:800 2.6rem/1 var(--display)}
+.sticky .hand{font-size:1.4rem;line-height:1.1;display:block;margin-top:6px}
+.idcard{width:240px;padding:16px;transform:rotate(3deg);top:40px;right:2%;border-radius:10px}
+.idcard .top{height:34px;margin:-16px -16px 14px;border-radius:10px 10px 0 0;background:var(--sky)}
+.idcard .row{display:flex;gap:12px;align-items:center}
+.avatar{width:58px;height:58px;border-radius:12px;overflow:hidden;background:var(--mint);display:grid;place-items:center;font:800 1.4rem var(--display);color:#1d2742}
+.idcard small{display:block;color:var(--muted);font-size:.8rem}
+.idcard strong{font-family:var(--display);font-size:1.1rem}
+.idcard .barcode{margin-top:14px;height:22px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 5px,var(--ink) 5px 6px,transparent 6px 9px);opacity:.7}
+.ticket{width:250px;padding:16px 18px;bottom:24px;left:0;transform:rotate(2deg);border-radius:8px;border-left:6px dashed var(--paper)}
+.ticket small{color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-size:.72rem;font-weight:600}
+.ticket strong{display:block;font-family:var(--display);font-size:1.15rem;margin-top:2px}
+.note{bottom:96px;right:0;width:190px;padding:14px 16px;transform:rotate(-2deg);background:var(--mint);color:#1d2742}
+.note .hand{font-size:1.35rem;line-height:1.15}
+@media (max-width:860px){.hero{grid-template-columns:1fr;padding-block:48px 32px}.desk{min-height:420px}}
+@media (max-width:480px){.desk{min-height:auto;display:grid;gap:22px;justify-items:center}.obj{position:relative;inset:auto!important}}
+
+/* sections */
+section{padding-block:56px}
+.head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:28px}
+.head h2{font-size:clamp(2rem,5vw,3rem);font-weight:800}
+.head .hand{font-size:1.5rem;color:var(--muted)}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.proj{background:var(--card);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.proj:nth-child(1){transform:rotate(-.6deg)}.proj:nth-child(3){transform:rotate(.6deg)}
+.shot{height:200px;position:relative;overflow:hidden;flex:none}
+.shot img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover}
+.shot.fit img{object-fit:contain;object-position:center top;padding-top:14px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.35))}
+.watch{justify-self:start;margin-top:8px;font:600 .88rem var(--body);padding:7px 14px;border-radius:999px;background:var(--ink);color:var(--paper);text-decoration:none}
+.watch:hover{opacity:.85}
+.shot.fit-logo img{object-fit:contain;padding:10px}
+.job .logo{width:56px;height:56px;border-radius:12px;object-fit:contain;background:#fff;margin-top:10px;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.job .logo.dark{background:#130f40;width:96px;height:40px;padding:6px 8px}
+.avatar{position:relative}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.proj .body{padding:18px 20px 22px;display:grid;gap:8px;flex:1;align-content:start}
+.proj h3{font-size:1.5rem}
+.badge{justify-self:start;font-size:.78rem;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--marigold);color:#1d2742}
+.proj p{margin:0;color:var(--muted);font-size:.97rem}
+.stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.stack span{font-size:.78rem;padding:2px 9px;border:1px solid var(--line);border-radius:6px}
+/* mockups drawn in CSS */
+.browser{width:78%;height:140px;background:#fff;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.15);overflow:hidden}
+.browser .bar{height:18px;background:#e6e9f0;display:flex;gap:4px;align-items:center;padding-left:8px}
+.browser .bar i{width:6px;height:6px;border-radius:50%;background:#c3c9d6}
+.browser .in{padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.browser .blk{height:34px;border-radius:5px}
+.phone{width:84px;height:160px;background:#1d2742;border-radius:16px;padding:8px 6px;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+.phone .scr{height:100%;background:#fff;border-radius:10px;padding:8px 6px;display:grid;gap:5px;align-content:start}
+.phone .scr i{height:14px;border-radius:4px;display:block}
+.map{width:78%;height:140px;border-radius:8px;background:#e7f1e4;position:relative;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.15)}
+.map::before{content:"";position:absolute;inset:0;background:linear-gradient(35deg,transparent 46%,#fff 46% 52%,transparent 52%),linear-gradient(-60deg,transparent 60%,#fff 60% 64%,transparent 64%)}
+.pin{position:absolute;width:16px;height:16px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--tape)}
+@media (max-width:900px){.projects{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.projects{grid-template-columns:1fr}.proj{transform:none!important}}
+
+/* experience */
+.timeline{display:grid;gap:18px;max-width:820px}
+.job{background:var(--card);border-radius:12px;padding:20px 22px;box-shadow:var(--shadow);display:grid;gap:4px}
+.job .when{font-weight:600;color:var(--muted);font-size:.92rem;font-variant-numeric:tabular-nums}
+.job h3{font-size:1.25rem}
+.job .org{font-weight:500;color:var(--muted);margin:2px 0 8px}
+.job ul{margin:0;padding-left:1.1em;display:grid;gap:4px}
+
+/* about */
+.about{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:start}
+.about p{max-width:62ch;margin:0 0 14px}
+.skills{background:var(--card);border-radius:12px;padding:22px;box-shadow:var(--shadow);transform:rotate(1deg);position:relative}
+.skills h3{font-size:1.1rem;margin-bottom:8px}
+.skills ul{list-style:none;margin:0 0 16px;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.skills li{font-size:.85rem;padding:3px 10px;border-radius:6px;background:var(--paper)}
+@media (max-width:760px){.about{grid-template-columns:1fr}}
+
+/* contact */
+.contact{background:var(--ink);color:var(--paper);border-radius:22px;padding:48px clamp(22px,5vw,56px);display:grid;gap:16px;position:relative;overflow:hidden}
+.contact h2{font-size:clamp(2.4rem,6vw,4rem);font-weight:800}
+.contact p{margin:0;max-width:56ch;opacity:.85}
+.email{font:600 clamp(1.1rem,3vw,1.5rem) var(--body);word-break:break-all}
+.contact .btn{background:var(--marigold);border-color:var(--marigold);color:#1d2742}
+.contact .btn.ghost{background:transparent;color:var(--paper);border-color:var(--paper)}
+.contact .doodle{position:absolute;right:28px;top:22px;font-size:1.6rem;color:var(--marigold);transform:rotate(6deg)}
+@media (max-width:600px){.contact .doodle{display:none}}
+footer{padding-block:36px 48px;color:var(--muted);font-size:.9rem;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between}
+footer nav{all:unset;display:flex;gap:18px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="mark" href="#top"><span>VS</span> Vaishnavi</a>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn" href="Vaishnavi_Siravuri_Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+  </div>
+</nav>
+
+<main id="top" class="wrap">
+  <header class="hero">
+    <div>
+      <div class="hi hand">Hi, I'm</div>
+      <h1>Vaishnavi <em>Siravuri</em></h1>
+      <p class="role">Full-stack developer building web and mobile apps with React Native, JavaScript, Python, Java and SQL, from Figma designs to working products. Growing into AI and machine learning.</p>
+      <ul class="tags">
+        <li>CS @ UT Dallas '28</li>
+        <li>Developer @ ACM UTD</li>
+        <li>2nd place, Axxess Hackathon 2025</li>
+      </ul>
+      <div class="cta">
+        <a class="btn" href="#projects">See my work</a>
+        <a class="btn ghost" href="Vaishnavi_Siravuri_Resume.pdf" target="_blank" rel="noopener">View résumé</a>
+      </div>
+    </div>
+
+    <div class="desk" aria-label="A few highlights">
+      <div class="obj sticky"><b>2nd</b><span class="hand">out of 350 at Axxess Hackathon 2025!</span></div>
+      <div class="obj idcard">
+        <div class="top"></div>
+        <div class="row"><div class="avatar"><img src="profile.jpg" alt="Vaishnavi Siravuri" onerror="this.remove()">VS</div><div><small>UT Dallas · Computer Science</small><strong>Vaishnavi S.</strong><small>Class of 2028</small></div></div>
+        <div class="barcode"></div>
+      </div>
+      <div class="obj ticket tape"><small>ACM Projects · Spring 2026</small><strong>CarCare Showcase</strong></div>
+      <div class="obj note"><span class="hand">Looking for Summer 2027 SWE internships</span></div>
+    </div>
+  </header>
+
+  <section id="projects">
+    <div class="head"><h2>Projects</h2><span class="hand">things I've built</span></div>
+    <div class="projects">
+      <article class="proj">
+        <div class="shot" style="background:#e9a9a6"><img src="materna.png" alt="Materna logo: a mother holding a baby inside a circle"></div>
+        <div class="body">
+          <span class="badge">2nd of 350 · Axxess Hackathon 2025</span>
+          <h3>Materna</h3>
+          <p>A maternal health web app with symptom and mood tracking, recipes, guided exercises and an AI chatbot for real-time guidance. I led the frontend and built the chatbot in Python.</p>
+          <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Python</span></div>
+        </div>
+      </article>
+      <article class="proj">
+        <div class="shot fit" style="background:#130f40"><img src="carcare-app.png" alt="CarCare home screen showing a 2017 Honda Civic, an upcoming oil change and help shortcuts"></div>
+        <div class="body">
+          <span class="badge">ACM UTD Projects</span>
+          <h3>CarCare</h3>
+          <p>A mobile app that keeps all your car care in one place: VIN-based car profiles, photo upload of service stickers into calendar reminders, local repair shops and at-home fix guides. I designed the UI and built the frontend.</p>
+          <div class="stack"><span>React Native</span><span>Expo</span><span>NativeWind</span><span>Figma</span></div>
+          <a class="watch" href="https://www.youtube.com/live/QH3ow5uoSwI?si=uxvtxW6_l3jbD1CG" target="_blank" rel="noopener">▶ Watch our presentation</a>
+        </div>
+      </article>
+      <article class="proj">
+        <div class="shot fit-logo" style="background:#f1e6d2"><img src="realtycheck.png" alt="RealtyCheck logo: a house with a dollar sign"></div>
+        <div class="body">
+          <span class="badge">WeHack 2025</span>
+          <h3>RealtyCheck</h3>
+          <p>Enter a location and see nearby properties, plus which ones offer the best return on investment based on recent market activity. Built in 24 hours.</p>
+          <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="head"><h2>Experience</h2><span class="hand">where I've been building</span></div>
+    <div class="timeline">
+      <div class="job">
+        <div class="when">May 2026 – Present</div>
+        <div><h3>Developer, Community Outreach</h3><div class="org">ACM UTD · Richardson, TX</div>
+          <ul>
+            <li>Build the website for ACM's high school hackathons and bootcamps, with event details, schedules and resources</li>
+            <li>Forked and redesigned HARP, HackUTD's application platform, to track student hackathon applications</li>
+            <li>Set up Jury, a hackathon judging platform, so judges can review and score student projects</li>
+          </ul></div>
+      </div>
+      <div class="job">
+        <div class="when">Spring 2026</div>
+        <div><h3>Frontend Developer, CarCare</h3><div class="org">ACM UTD Projects · Richardson, TX</div>
+          <ul>
+            <li>Designed the app in Figma and built the login, VIN car profile, service upload and repair shop screens</li>
+            <li>Built the image-upload flow with loading states, error handling and confirmations</li>
+            <li>Shipped in a 10-week program and presented at the ACM Projects Spring 2026 Showcase</li>
+          </ul></div>
+      </div>
+      <div class="job">
+        <div class="when">May 2025</div>
+        <div><h3>Web Developer (Volunteer)</h3><div class="org">VisioNari · Remote</div>
+          <ul><li>Built and maintained the website for a nonprofit that runs community bootcamps teaching English and practical skills</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="head"><h2>About me</h2><span class="hand">a little more</span></div>
+    <div class="about">
+      <div>
+        <p>I'm a Computer Science junior at UT Dallas who builds across the full stack. I design interfaces in Figma, build them out in JavaScript and React Native, and work with Python, Java and SQL (MySQL) on the logic and data behind them.</p>
+        <p>I like projects that solve everyday problems. I helped build Materna, a maternal health web app with an AI chatbot that won 2nd place out of 350 at Axxess Hackathon 2025, and CarCare, a React Native app that keeps track of a car's maintenance. Right now I'm building the application and judging tools for ACM UTD's high school hackathons.</p>
+        <p>I'm especially interested in AI and machine learning. I'm taking a machine learning course alongside my full-stack work, and I want to grow toward a career building AI-powered products.</p>
+      </div>
+      <div class="skills tape">
+        <h3>Languages</h3>
+        <ul><li>Python</li><li>Java</li><li>C++</li><li>JavaScript</li><li>SQL (MySQL)</li><li>HTML</li><li>CSS</li></ul>
+        <h3>Frameworks &amp; tools</h3>
+        <ul><li>React Native</li><li>Expo</li><li>Tailwind / NativeWind</li><li>Figma</li><li>Git</li></ul>
+        <h3>Learning now</h3>
+        <ul style="margin:0"><li>Full-stack development</li><li>AI / machine learning</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+            <h2>Reach out to me</h2>
+      <p>I'm looking for Summer 2027 software engineering internships, especially roles in full-stack development or AI/ML. I'd be glad to talk about opportunities or projects.</p>
+      <div class="email" id="email">vaishnavi.siravuri@gmail.com</div>
+      <div class="cta">
+        <button class="btn" id="copy" type="button">Copy email</button>
+        <a class="btn ghost" href="https://www.linkedin.com/in/vaishnavi-siravuri/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/VaishnaviSiravuri" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn ghost" href="Vaishnavi_Siravuri_Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Designed and built by Vaishnavi Siravuri · 2026</span>
+    <nav><a href="https://www.linkedin.com/in/vaishnavi-siravuri/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/VaishnaviSiravuri" target="_blank" rel="noopener">GitHub</a><a href="mailto:vaishnavi.siravuri@gmail.com">Email</a></nav>
+  </footer>
+</main>
+
+<script>
+document.getElementById("copy").addEventListener("click",async e=>{
+  const b=e.currentTarget,t="vaishnavi.siravuri@gmail.com";
+  try{await navigator.clipboard.writeText(t);b.textContent="Copied!"}
+  catch{const r=document.createRange();r.selectNodeContents(document.getElementById("email"));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Selected, press Ctrl+C"}
+  setTimeout(()=>b.textContent="Copy email",2000);
+});
+</script>
+</body>
+</html>
