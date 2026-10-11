@@ -66,7 +66,7 @@ nav ul a:hover{color:var(--ink)}
 .idcard{width:240px;padding:16px;transform:rotate(3deg);top:40px;right:2%;border-radius:10px}
 .idcard .top{height:34px;margin:-16px -16px 14px;border-radius:10px 10px 0 0;background:var(--sky)}
 .idcard .row{display:flex;gap:12px;align-items:center}
-.avatar{width:58px;height:58px;border-radius:12px;background:var(--mint);display:grid;place-items:center;font:800 1.4rem var(--display);color:#1d2742}
+.avatar{width:58px;height:58px;border-radius:12px;overflow:hidden;background:var(--mint);display:grid;place-items:center;font:800 1.4rem var(--display);color:#1d2742}
 .idcard small{display:block;color:var(--muted);font-size:.8rem}
 .idcard strong{font-family:var(--display);font-size:1.1rem}
 .idcard .barcode{margin-top:14px;height:22px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 5px,var(--ink) 5px 6px,transparent 6px 9px);opacity:.7}
@@ -88,7 +88,16 @@ section{padding-block:56px}
 .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
 .proj{background:var(--card);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;min-width:0}
 .proj:nth-child(1){transform:rotate(-.6deg)}.proj:nth-child(3){transform:rotate(.6deg)}
-.shot{height:190px;display:grid;place-items:center;position:relative}
+.shot{height:200px;position:relative;overflow:hidden;flex:none}
+.shot img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover}
+.shot.fit img{object-fit:contain;object-position:center top;padding-top:14px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.35))}
+.watch{justify-self:start;margin-top:8px;font:600 .88rem var(--body);padding:7px 14px;border-radius:999px;background:var(--ink);color:var(--paper);text-decoration:none}
+.watch:hover{opacity:.85}
+.shot.fit-logo img{object-fit:contain;padding:10px}
+.job .logo{width:56px;height:56px;border-radius:12px;object-fit:contain;background:#fff;margin-top:10px;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.job .logo.dark{background:#130f40;width:96px;height:40px;padding:6px 8px}
+.avatar{position:relative}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .proj .body{padding:18px 20px 22px;display:grid;gap:8px;flex:1;align-content:start}
 .proj h3{font-size:1.5rem}
 .badge{justify-self:start;font-size:.78rem;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--marigold);color:#1d2742}
@@ -165,7 +174,7 @@ footer nav{all:unset;display:flex;gap:18px}
       <ul class="tags">
         <li>CS @ UT Dallas '28</li>
         <li>Developer @ ACM UTD</li>
-        <li>2nd place, Axxess Hackathon</li>
+        <li>2nd place, Axxess Hackathon 2025</li>
       </ul>
       <div class="cta">
         <a class="btn" href="#projects">See my work</a>
@@ -174,14 +183,14 @@ footer nav{all:unset;display:flex;gap:18px}
     </div>
 
     <div class="desk" aria-label="A few highlights">
-      <div class="obj sticky"><b>2nd</b><span class="hand">out of 350 at the Axxess Hackathon!</span></div>
+      <div class="obj sticky"><b>2nd</b><span class="hand">out of 350 at Axxess Hackathon 2025!</span></div>
       <div class="obj idcard">
         <div class="top"></div>
-        <div class="row"><div class="avatar">VS</div><div><small>UT Dallas · Computer Science</small><strong>Vaishnavi S.</strong><small>Class of 2028</small></div></div>
+        <div class="row"><div class="avatar"><img src="profile.jpg" alt="Vaishnavi Siravuri" onerror="this.remove()">VS</div><div><small>UT Dallas · Computer Science</small><strong>Vaishnavi S.</strong><small>Class of 2028</small></div></div>
         <div class="barcode"></div>
       </div>
       <div class="obj ticket tape"><small>ACM Projects · Spring 2026</small><strong>CarCare Showcase</strong></div>
-      <div class="obj note"><span class="hand">Looking for Summer 2027 internships in India</span></div>
+      <div class="obj note"><span class="hand">Looking for Summer 2027 SWE internships</span></div>
     </div>
   </header>
 
@@ -189,32 +198,26 @@ footer nav{all:unset;display:flex;gap:18px}
     <div class="head"><h2>Projects</h2><span class="hand">things I've built</span></div>
     <div class="projects">
       <article class="proj">
-        <div class="shot" style="background:#f6d8e3">
-          <div class="browser"><div class="bar"><i></i><i></i><i></i></div>
-            <div class="in"><div class="blk" style="background:#f2b8cb"></div><div class="blk" style="background:#cfe3f5"></div><div class="blk" style="background:#d9efe2"></div><div class="blk" style="background:#fbe6b8"></div></div></div>
-        </div>
+        <div class="shot" style="background:#e9a9a6"><img src="materna.png" alt="Materna logo: a mother holding a baby inside a circle"></div>
         <div class="body">
-          <span class="badge">2nd of 350 · Axxess Hackathon</span>
+          <span class="badge">2nd of 350 · Axxess Hackathon 2025</span>
           <h3>Materna</h3>
           <p>A maternal health web app with symptom and mood tracking, recipes, guided exercises and an AI chatbot for real-time guidance. I led the frontend and built the chatbot in Python.</p>
           <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Python</span></div>
         </div>
       </article>
       <article class="proj">
-        <div class="shot" style="background:#d6e6f6">
-          <div class="phone"><div class="scr"><i style="background:#9cc3e8;height:30px"></i><i style="background:#e6e9f0"></i><i style="background:#f3b53f"></i><i style="background:#e6e9f0"></i><i style="background:#a9dcc2"></i><i style="background:#e6e9f0"></i></div></div>
-        </div>
+        <div class="shot fit" style="background:#130f40"><img src="carcare-app.png" alt="CarCare home screen showing a 2017 Honda Civic, an upcoming oil change and help shortcuts"></div>
         <div class="body">
           <span class="badge">ACM UTD Projects</span>
           <h3>CarCare</h3>
           <p>A mobile app that keeps all your car care in one place: VIN-based car profiles, photo upload of service stickers into calendar reminders, local repair shops and at-home fix guides. I designed the UI and built the frontend.</p>
           <div class="stack"><span>React Native</span><span>Expo</span><span>NativeWind</span><span>Figma</span></div>
+          <a class="watch" href="https://www.youtube.com/live/QH3ow5uoSwI?si=uxvtxW6_l3jbD1CG" target="_blank" rel="noopener">▶ Watch our presentation</a>
         </div>
       </article>
       <article class="proj">
-        <div class="shot" style="background:#dcefe2">
-          <div class="map"><span class="pin" style="left:22%;top:30%"></span><span class="pin" style="left:58%;top:22%;background:#f3b53f"></span><span class="pin" style="left:44%;top:58%"></span><span class="pin" style="left:76%;top:62%;background:#1d2742"></span></div>
-        </div>
+        <div class="shot fit-logo" style="background:#f1e6d2"><img src="realtycheck.png" alt="RealtyCheck logo: a house with a dollar sign"></div>
         <div class="body">
           <span class="badge">WeHack 2025</span>
           <h3>RealtyCheck</h3>
@@ -258,26 +261,25 @@ footer nav{all:unset;display:flex;gap:18px}
     <div class="head"><h2>About me</h2><span class="hand">a little more</span></div>
     <div class="about">
       <div>
-        <p>I'm a Computer Science junior at UT Dallas. I grew up in Muscat, Oman, and my family is from India. I speak English, Telugu, Hindi and some French.</p>
-        <p>I like the frontend side of things: turning a Figma sketch into something people can actually tap through. My favorite projects solve everyday problems, like keeping track of a car's maintenance or helping expecting mothers feel supported.</p>
-        <p>Right now I'm building tools for ACM's high school hackathons and taking courses in full-stack development and machine learning.</p>
+        <p>I'm a Computer Science junior at UT Dallas who builds across the full stack. I design interfaces in Figma, build them out in JavaScript and React Native, and work with Python, Java and SQL (MySQL) on the logic and data behind them.</p>
+        <p>I like projects that solve everyday problems. I helped build Materna, a maternal health web app with an AI chatbot that won 2nd place out of 350 at Axxess Hackathon 2025, and CarCare, a React Native app that keeps track of a car's maintenance. Right now I'm building the application and judging tools for ACM UTD's high school hackathons.</p>
+        <p>I'm especially interested in AI and machine learning. I'm taking a machine learning course alongside my full-stack work, and I want to grow toward a career building AI-powered products.</p>
       </div>
       <div class="skills tape">
         <h3>Languages</h3>
-        <ul><li>Python</li><li>Java</li><li>C++</li><li>JavaScript</li><li>HTML</li><li>CSS</li></ul>
+        <ul><li>Python</li><li>Java</li><li>C++</li><li>JavaScript</li><li>SQL (MySQL)</li><li>HTML</li><li>CSS</li></ul>
         <h3>Frameworks &amp; tools</h3>
         <ul><li>React Native</li><li>Expo</li><li>Tailwind / NativeWind</li><li>Figma</li><li>Git</li></ul>
         <h3>Learning now</h3>
-        <ul style="margin:0"><li>Full-stack development</li><li>Machine learning</li></ul>
+        <ul style="margin:0"><li>Full-stack development</li><li>AI / machine learning</li></ul>
       </div>
     </div>
   </section>
 
   <section id="contact">
     <div class="contact">
-      <span class="doodle hand">✦ say hi!</span>
-      <h2>Say hello</h2>
-      <p>I'm looking for software engineering internships for Summer 2027, especially in India. I'd love to hear from you.</p>
+            <h2>Reach out to me</h2>
+      <p>I'm looking for Summer 2027 software engineering internships, especially roles in full-stack development or AI/ML. I'd be glad to talk about opportunities or projects.</p>
       <div class="email" id="email">vaishnavi.siravuri@gmail.com</div>
       <div class="cta">
         <button class="btn" id="copy" type="button">Copy email</button>
